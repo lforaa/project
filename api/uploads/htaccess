@@ -1,0 +1,9 @@
+# 3D modellerin ve görsellerin farklı porttaki (localhost:5173) siteden okunabilmesi için
+<IfModule mod_headers.c>
+  Header set Access-Control-Allow-Origin "*"
+  Header set Access-Control-Allow-Methods "GET, OPTIONS"
+</IfModule>
+<IfModule mod_mime.c>
+  AddType model/gltf-binary .glb
+  AddType model/gltf+json .gltf
+</IfModule>

@@ -1,5 +1,9 @@
 import { useEffect, useState, useCallback, useRef } from 'react';
+<<<<<<< HEAD
 import { ordersApi, adminApi, productsApi, settingsApi, OrderRequirements, uploadProductImage, uploadModelFile, Order, OrderItem, AdminNote, AdminLog, Profile, Product, CartItem } from '@/lib/api';
+=======
+import { ordersApi, adminApi, productsApi, uploadProductImage, uploadModelFile, Order, OrderItem, AdminNote, AdminLog, Profile, Product, CartItem } from '@/lib/api';
+>>>>>>> 38f64ef9f69bc14e3ad462c02e8d190bfa25db23
 import { useAuth } from '@/contexts/AuthContext';
 import { navigate } from '@/lib/router';
 import {
@@ -7,10 +11,17 @@ import {
   Clock, User as UserIcon, AlertCircle, FileText, Check, Plus, Edit3,
   Trash2, Box, X, Eye, EyeOff, Power, Users, Tag, DollarSign, Layers,
   Upload, FolderOpen, FileBox, Loader2, Image as ImageIcon,
+<<<<<<< HEAD
   ArrowLeft, Mail, Globe, ChevronRight, Ban, Filter, Link2,
 } from 'lucide-react';
 
 type Tab = 'orders' | 'products' | 'users' | 'settings';
+=======
+  ArrowLeft, Mail, Globe, ChevronRight, Ban, Filter,
+} from 'lucide-react';
+
+type Tab = 'orders' | 'products' | 'users';
+>>>>>>> 38f64ef9f69bc14e3ad462c02e8d190bfa25db23
 
 const statusLabels: Record<string, { label: string; color: string }> = {
   received: { label: 'Alındı', color: 'bg-blue-50 text-blue-700 border-blue-200' },
@@ -82,12 +93,18 @@ export function AdminPage() {
         <TabButton active={tab === 'orders'} onClick={() => setTab('orders')} icon={<Package className="w-4 h-4" />} label="Siparişler" />
         <TabButton active={tab === 'products'} onClick={() => setTab('products')} icon={<Box className="w-4 h-4" />} label="Ürünler" />
         {isSuperAdmin && <TabButton active={tab === 'users'} onClick={() => setTab('users')} icon={<Users className="w-4 h-4" />} label="Admin Kullanıcılar" />}
+<<<<<<< HEAD
         {isSuperAdmin && <TabButton active={tab === 'settings'} onClick={() => setTab('settings')} icon={<Link2 className="w-4 h-4" />} label="Sipariş Ayarları" />}
+=======
+>>>>>>> 38f64ef9f69bc14e3ad462c02e8d190bfa25db23
       </div>
 
       {tab === 'orders' && <OrdersTab isSuperAdmin={isSuperAdmin} />}
       {tab === 'products' && <ProductsTab />}
+<<<<<<< HEAD
       {tab === 'settings' && isSuperAdmin && <SettingsTab />}
+=======
+>>>>>>> 38f64ef9f69bc14e3ad462c02e8d190bfa25db23
       {tab === 'users' && isSuperAdmin && <UsersTab refreshProfile={refreshProfile} currentUserId={profile!.id} />}
     </div>
   );
@@ -220,8 +237,11 @@ function OrdersTab({ isSuperAdmin }: { isSuperAdmin: boolean }) {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
             <InfoCard label="Müşteri E-posta" value={selectedOrder.email || '—'} />
             <InfoCard label="IP Adresi" value={selectedOrder.ip_address || '—'} />
+<<<<<<< HEAD
             <InfoCard label="Steam ID" value={selectedOrder.steam_id || '—'} />
             <InfoCard label="Discord" value={selectedOrder.discord_id ? `${selectedOrder.discord_name || ''} (${selectedOrder.discord_id})` : '—'} />
+=======
+>>>>>>> 38f64ef9f69bc14e3ad462c02e8d190bfa25db23
             <InfoCard label="Toplam Tutar" value={selectedOrder.total_price > 0 ? `${selectedOrder.total_price.toLocaleString('tr-TR')} ₺` : 'Fiyatsız'} />
             <InfoCard label="Kalem Sayısı" value={`${selectedOrder.items.length} ürün`} />
           </div>
@@ -469,6 +489,7 @@ function ProductForm({ product, onClose, onSaved }: { product: Product | null; o
       else { setError('3D model dosyası yüklenemedi.'); setSaving(false); return; }
     }
 
+<<<<<<< HEAD
     let imageUrl: string | undefined;
     if (imageFile) {
       setUploading(true);
@@ -478,6 +499,8 @@ function ProductForm({ product, onClose, onSaved }: { product: Product | null; o
       imageUrl = uploadedUrl;
     }
 
+=======
+>>>>>>> 38f64ef9f69bc14e3ad462c02e8d190bfa25db23
     const productData = {
       name: name.trim(),
       description: description.trim(),
@@ -490,11 +513,30 @@ function ProductForm({ product, onClose, onSaved }: { product: Product | null; o
       is_active: isActive,
     };
 
+<<<<<<< HEAD
     try {
       if (product) {
         await productsApi.update(product.id, { ...productData, image_url: imageUrl });
       } else {
         await productsApi.create({ ...productData, image_url: imageUrl });
+=======
+    let productId = product?.id;
+    try {
+      if (product) {
+        await productsApi.update(product.id, productData);
+      } else {
+        const { id } = await productsApi.create({ ...productData, image_url: undefined });
+        productId = id;
+      }
+
+      if (imageFile && productId) {
+        setUploading(true);
+        const uploadedUrl = await uploadProductImage(imageFile);
+        setUploading(false);
+        if (uploadedUrl && !product) {
+          await productsApi.update(productId!, { ...productData, image_url: undefined });
+        }
+>>>>>>> 38f64ef9f69bc14e3ad462c02e8d190bfa25db23
       }
 
       setSaving(false);
@@ -859,6 +901,7 @@ function FormField({ label, icon, children, className }: { label: string; icon?:
 function InfoCard({ label, value }: { label: string; value: string }) {
   return (<div className="rounded-xl bg-slate-50 p-4"><p className="text-xs text-slate-500 font-medium mb-1">{label}</p><p className="text-sm font-semibold text-slate-900">{value}</p></div>);
 }
+<<<<<<< HEAD
 
 
 // ============================================================
@@ -922,3 +965,5 @@ function SettingsTab() {
     </div>
   );
 }
+=======
+>>>>>>> 38f64ef9f69bc14e3ad462c02e8d190bfa25db23

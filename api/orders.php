@@ -10,6 +10,7 @@ $pdo = db();
 // POST: Yeni sipariş
 if ($method === 'POST') {
   $user = require_auth();
+<<<<<<< HEAD
 
   // Süper admin ayarına göre Steam / Discord bağlama zorunluluğu
   $settings = get_settings();
@@ -20,6 +21,8 @@ if ($method === 'POST') {
     json_error('Sipariş verebilmek için Discord hesabınızı bağlamanız gerekiyor.', 403);
   }
 
+=======
+>>>>>>> 38f64ef9f69bc14e3ad462c02e8d190bfa25db23
   $items = $input['items'] ?? [];
   if (!is_array($items) || count($items) === 0) json_error('Sepet boş.');
 
@@ -109,7 +112,11 @@ if ($method === 'GET' && !isset($_GET['admin'])) {
 // GET?admin=1: Tüm siparişler (admin)
 if ($method === 'GET' && isset($_GET['admin'])) {
   require_staff();
+<<<<<<< HEAD
   $stmt = $pdo->query('SELECT o.*, u.email as user_email, u.steam_id, u.discord_id, u.discord_name FROM orders o JOIN users u ON o.user_id = u.id ORDER BY o.created_at DESC');
+=======
+  $stmt = $pdo->query('SELECT o.*, u.email as user_email FROM orders o JOIN users u ON o.user_id = u.id ORDER BY o.created_at DESC');
+>>>>>>> 38f64ef9f69bc14e3ad462c02e8d190bfa25db23
   $orders = $stmt->fetchAll();
 
   $orderIds = array_column($orders, 'id');
@@ -199,4 +206,8 @@ if ($method === 'DELETE') {
   json_response(['success' => true]);
 }
 
+<<<<<<< HEAD
 json_error('Geçersiz istek.', 404);
+=======
+json_error('Geçersiz istek.', 404);
+>>>>>>> 38f64ef9f69bc14e3ad462c02e8d190bfa25db23

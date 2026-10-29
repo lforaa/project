@@ -1,8 +1,15 @@
+<<<<<<< HEAD
 import { useEffect, useState } from 'react';
 import { useCart } from '@/contexts/CartContext';
 import { useAuth } from '@/contexts/AuthContext';
 import { ordersApi, settingsApi, OrderRequirements } from '@/lib/api';
 import { LinkedAccounts } from '@/components/LinkedAccounts';
+=======
+import { useState } from 'react';
+import { useCart } from '@/contexts/CartContext';
+import { useAuth } from '@/contexts/AuthContext';
+import { ordersApi } from '@/lib/api';
+>>>>>>> 38f64ef9f69bc14e3ad462c02e8d190bfa25db23
 import { navigate } from '@/lib/router';
 import { CheckCircle2, ArrowLeft, AlertCircle, ShoppingBag } from 'lucide-react';
 
@@ -14,6 +21,7 @@ export function CheckoutPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [orderCode, setOrderCode] = useState<string | null>(null);
+<<<<<<< HEAD
   const [requirements, setRequirements] = useState<OrderRequirements>({ require_steam: false, require_discord: false });
 
   useEffect(() => {
@@ -24,6 +32,8 @@ export function CheckoutPage() {
     requirements.require_steam && !profile?.steam_id ? 'Steam' : null,
     requirements.require_discord && !profile?.discord_id ? 'Discord' : null,
   ].filter(Boolean) as string[];
+=======
+>>>>>>> 38f64ef9f69bc14e3ad462c02e8d190bfa25db23
 
   if (!profile) {
     navigate('/auth');
@@ -88,10 +98,13 @@ export function CheckoutPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
+<<<<<<< HEAD
     if (missing.length > 0) {
       setError(`Sipariş vermek için ${missing.join(' ve ')} hesabınızı bağlamanız gerekiyor.`);
       return;
     }
+=======
+>>>>>>> 38f64ef9f69bc14e3ad462c02e8d190bfa25db23
     setLoading(true);
 
     const itemsPayload = items.map(i => ({
@@ -156,8 +169,11 @@ export function CheckoutPage() {
             </div>
           </div>
 
+<<<<<<< HEAD
           <LinkedAccounts requirements={requirements} />
 
+=======
+>>>>>>> 38f64ef9f69bc14e3ad462c02e8d190bfa25db23
           <div className="bg-white rounded-2xl border border-slate-200 p-6">
             <h3 className="font-semibold text-slate-900 mb-4">Sipariş Notu <span className="text-slate-400 font-normal">(opsiyonel)</span></h3>
             <textarea
@@ -204,7 +220,11 @@ export function CheckoutPage() {
 
             <button
               onClick={handleSubmit}
+<<<<<<< HEAD
               disabled={loading || missing.length > 0}
+=======
+              disabled={loading}
+>>>>>>> 38f64ef9f69bc14e3ad462c02e8d190bfa25db23
               className="w-full flex items-center justify-center gap-2 mt-6 py-3 rounded-xl bg-slate-900 text-white font-medium text-sm hover:bg-slate-800 disabled:opacity-50 transition-colors"
             >
               {loading ? (
@@ -218,4 +238,8 @@ export function CheckoutPage() {
       </div>
     </div>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 38f64ef9f69bc14e3ad462c02e8d190bfa25db23

@@ -48,7 +48,11 @@ export function AuthPage() {
           <div className="w-14 h-14 rounded-2xl bg-slate-900 flex items-center justify-center mb-3">
             <Box className="w-7 h-7 text-white" />
           </div>
+<<<<<<< HEAD
           <h1 className="text-2xl font-bold text-slate-900">SharpDev</h1>
+=======
+          <h1 className="text-2xl font-bold text-slate-900">3D Showroom</h1>
+>>>>>>> 38f64ef9f69bc14e3ad462c02e8d190bfa25db23
           <p className="text-sm text-slate-500 mt-1">
             {mode === 'login' ? 'Hesabınıza giriş yapın' : 'Yeni hesap oluşturun'}
           </p>

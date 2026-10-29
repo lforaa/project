@@ -79,6 +79,7 @@ function log_action(int $adminId, ?int $orderId, string $action, string $details
   $stmt = db()->prepare('INSERT INTO admin_logs (admin_id, order_id, action, details) VALUES (?, ?, ?, ?)');
   $stmt->execute([$adminId, $orderId, $action, $details]);
 }
+<<<<<<< HEAD
 
 function user_payload(array $u): array {
   return [
@@ -106,3 +107,5 @@ function get_settings(): array {
     'require_discord' => ($m['require_discord'] ?? '0') === '1',
   ];
 }
+=======
+>>>>>>> 38f64ef9f69bc14e3ad462c02e8d190bfa25db23

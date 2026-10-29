@@ -17,7 +17,20 @@ if ($action === 'login') {
   if (!$user || !password_verify($password, $user['password_hash'])) {
     json_error('E-posta veya şifre hatalı.', 401);
   }
+<<<<<<< HEAD
   json_response(user_payload($user));
+=======
+  json_response([
+    'id' => (int)$user['id'],
+    'email' => $user['email'],
+    'full_name' => $user['full_name'],
+    'phone' => $user['phone'],
+    'address' => $user['address'],
+    'role' => $user['role'],
+    'provider' => $user['provider'],
+    'created_at' => $user['created_at'],
+  ]);
+>>>>>>> 38f64ef9f69bc14e3ad462c02e8d190bfa25db23
 }
 
 if ($action === 'register') {
@@ -51,7 +64,20 @@ if ($action === 'register') {
 
 if ($action === 'me') {
   $user = require_auth();
+<<<<<<< HEAD
   json_response(user_payload($user));
+=======
+  json_response([
+    'id' => (int)$user['id'],
+    'email' => $user['email'],
+    'full_name' => $user['full_name'],
+    'phone' => $user['phone'],
+    'address' => $user['address'],
+    'role' => $user['role'],
+    'provider' => $user['provider'],
+    'created_at' => $user['created_at'],
+  ]);
+>>>>>>> 38f64ef9f69bc14e3ad462c02e8d190bfa25db23
 }
 
 if ($action === 'update_profile') {
@@ -65,4 +91,8 @@ if ($action === 'update_profile') {
   json_response(['success' => true]);
 }
 
+<<<<<<< HEAD
 json_error('Geçersiz işlem.', 404);
+=======
+json_error('Geçersiz işlem.', 404);
+>>>>>>> 38f64ef9f69bc14e3ad462c02e8d190bfa25db23

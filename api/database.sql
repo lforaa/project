@@ -19,9 +19,12 @@ CREATE TABLE IF NOT EXISTS users (
   role ENUM('customer','super_admin','operations') NOT NULL DEFAULT 'customer',
   provider VARCHAR(50) DEFAULT 'email',
   provider_id VARCHAR(255) DEFAULT NULL,
+<<<<<<< HEAD
   steam_id VARCHAR(32) NULL UNIQUE,
   discord_id VARCHAR(32) NULL UNIQUE,
   discord_name VARCHAR(100) NULL,
+=======
+>>>>>>> 38f64ef9f69bc14e3ad462c02e8d190bfa25db23
   is_active TINYINT(1) DEFAULT 1,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB;
@@ -116,6 +119,7 @@ CREATE TABLE IF NOT EXISTS admin_logs (
   FOREIGN KEY (admin_id) REFERENCES users(id) ON DELETE CASCADE,
   FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE SET NULL
 ) ENGINE=InnoDB;
+<<<<<<< HEAD
 
 -- ============================================================
 -- AYARLAR (sipariş için Steam/Discord bağlama zorunluluğu vb.)
@@ -128,3 +132,5 @@ CREATE TABLE IF NOT EXISTS settings (
 INSERT IGNORE INTO settings (setting_key, setting_value) VALUES
   ('require_steam', '0'),
   ('require_discord', '0');
+=======
+>>>>>>> 38f64ef9f69bc14e3ad462c02e8d190bfa25db23

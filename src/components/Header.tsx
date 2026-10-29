@@ -24,7 +24,11 @@ export function Header() {
             <div className="w-9 h-9 rounded-xl bg-slate-900 flex items-center justify-center group-hover:scale-105 transition-transform">
               <Box className="w-5 h-5 text-white" />
             </div>
+<<<<<<< HEAD
             <span className="text-lg font-bold text-slate-900 hidden sm:block">SharpDev</span>
+=======
+            <span className="text-lg font-bold text-slate-900 hidden sm:block">3D Showroom</span>
+>>>>>>> 38f64ef9f69bc14e3ad462c02e8d190bfa25db23
           </button>
 
           <nav className="hidden md:flex items-center gap-1">

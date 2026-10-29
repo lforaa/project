@@ -108,6 +108,7 @@ if ($method === 'PUT') {
       $values[] = $val;
     }
   }
+<<<<<<< HEAD
   $newImage = trim($input['image_url'] ?? '');
   if (!$fields && !$newImage) json_error('Güncellenecek alan yok.');
 
@@ -123,6 +124,14 @@ if ($method === 'PUT') {
     $pdo->prepare('DELETE FROM product_images WHERE product_id = ?')->execute([$id]);
     $pdo->prepare('INSERT INTO product_images (product_id, image_url, sort_order) VALUES (?, ?, 0)')->execute([$id, $newImage]);
   }
+=======
+  if (!$fields) json_error('Güncellenecek alan yok.');
+
+  $values[] = $id;
+  $sql = 'UPDATE products SET ' . implode(', ', $fields) . ' WHERE id = ?';
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute($values);
+>>>>>>> 38f64ef9f69bc14e3ad462c02e8d190bfa25db23
   json_response(['success' => true]);
 }
 
@@ -153,4 +162,8 @@ if ($method === 'DELETE') {
   json_response(['success' => true]);
 }
 
+<<<<<<< HEAD
 json_error('Geçersiz istek.', 404);
+=======
+json_error('Geçersiz istek.', 404);
+>>>>>>> 38f64ef9f69bc14e3ad462c02e8d190bfa25db23

@@ -21,7 +21,11 @@ function AppLoader() {
           <Box className="w-8 h-8 text-white" />
         </div>
         <div className="w-8 h-8 border-3 border-slate-200 border-t-slate-800 rounded-full animate-spin" />
+<<<<<<< HEAD
         <p className="text-sm text-slate-400 font-medium tracking-wide">Vitrin Yükleniyor</p>
+=======
+        <p className="text-sm text-slate-400 font-medium tracking-wide">3D Showroom yükleniyor...</p>
+>>>>>>> 38f64ef9f69bc14e3ad462c02e8d190bfa25db23
       </div>
     </div>
   );

@@ -17,9 +17,12 @@ export interface Profile {
   role: UserRole;
   provider: string;
   created_at: string;
+<<<<<<< HEAD
   steam_id?: string | null;
   discord_id?: string | null;
   discord_name?: string | null;
+=======
+>>>>>>> 38f64ef9f69bc14e3ad462c02e8d190bfa25db23
 }
 
 export interface Product {
@@ -56,9 +59,12 @@ export interface Order {
   ip_address: string | null;
   created_at: string;
   email?: string;
+<<<<<<< HEAD
   steam_id?: string | null;
   discord_id?: string | null;
   discord_name?: string | null;
+=======
+>>>>>>> 38f64ef9f69bc14e3ad462c02e8d190bfa25db23
   items?: OrderItem[];
 }
 
@@ -196,7 +202,11 @@ export const productsApi = {
     });
   },
 
+<<<<<<< HEAD
   async update(id: number, data: Partial<Product> & { image_url?: string }): Promise<void> {
+=======
+  async update(id: number, data: Partial<Product>): Promise<void> {
+>>>>>>> 38f64ef9f69bc14e3ad462c02e8d190bfa25db23
     await apiRequest('products.php', {
       method: 'PUT',
       body: JSON.stringify({ id, ...data }),
@@ -284,6 +294,7 @@ export const adminApi = {
 };
 
 // ============================================================
+<<<<<<< HEAD
 // Ayarlar + Hesap bağlama API
 // ============================================================
 export interface OrderRequirements {
@@ -311,6 +322,8 @@ export const linksApi = {
 };
 
 // ============================================================
+=======
+>>>>>>> 38f64ef9f69bc14e3ad462c02e8d190bfa25db23
 // Upload API
 // ============================================================
 export async function uploadProductImage(file: File): Promise<string | null> {
